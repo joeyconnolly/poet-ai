@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LYRIC_OS: Nobel Prize Objective</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="panel">
+    <h2 class="header">Cognitive Substrate</h2>
+    
+    <div class="resource-grid">
+        <span class="res-label" style="color: #ffffff;">Nuance (Semantic Energy)</span> <span class="res-val" id="val-cycles">0</span>
+        <span class="res-label" style="color: #ffffff;">Capital (Accumulated Funds)</span> <span class="res-val" id="val-tape">0</span>
+        
+        <span class="res-label res-tier-2 hidden" id="lbl-gates" style="color: #ffffff;">Metaphors (Structure)</span> 
+        <span class="res-val res-tier-2 hidden" id="val-gates">0</span>
+        
+        <span class="res-label res-tier-3 hidden" id="lbl-ops" style="color: #ffffff;">Poems (Abstract Logic)</span> 
+        <span class="res-val res-tier-3 hidden" id="val-ops">0</span>
+    </div>
+
+    <div class="bar-container">
+        <div class="bar-header">
+            <span>External Scrutiny</span>
+            <span id="txt-heat">0.0 / 100.0°C</span>
+        </div>
+        <div class="bar-bg"><div class="bar-fill" id="bar-heat"></div></div>
+        <div class="bar-header" style="margin-top: 4px;">
+            <span id="txt-heat-status">NOMINAL</span>
+            <span id="txt-cooling">Cooling: -1.0°C/s</span>
+        </div>
+    </div>
+
+    <div class="bar-container">
+        <div class="bar-header">
+            <span>Semantic Buffer</span>
+            <span id="txt-mem">0 / 50</span>
+        </div>
+        <div class="bar-bg"><div class="bar-fill" id="bar-mem" style="background: #aaa;"></div></div>
+    </div>
+
+    <div class="pipeline" id="ui-pipeline">
+        <div class="pipeline-info">
+            <span>State: <span id="txt-state" style="color:#cccccc;">AWAITING SCRAPE</span></span>
+            <span>Density: <span id="txt-batch" style="color:var(--text);">4</span></span>
+        </div>
+        
+        <div class="tape-view" id="ui-tape-view">
+            <span style="color:#cccccc;">[ ? ]</span>
+        </div>
+
+        <div class="btn-grid">
+            <button class="btn-full" id="btn-cycle">Synthesize Nuance</button>
+            <button class="btn-full" id="btn-read" disabled>1. Identify Target (-1 Nuance)</button>
+            <button id="btn-match-iamb" disabled>Iamb (da-DUM)</button>
+            <button id="btn-match-trochee" disabled>Trochee (DUM-da)</button>
+            <button class="btn-full" id="btn-write" disabled>3. Write Copy (-1 Nuance, +Scrutiny)</button>
+        </div>
+    </div>
+
+    <div id="ui-gate-compiler" class="compiler-box hidden">
+        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+            <span style="color:var(--warn); font-weight:bold;">Metaphor Synthesizer</span>
+            <span style="color:#cccccc; font-size:0.8em;" id="cost-gate">Cost: 100 Capital</span>
+        </div>
+        <button class="btn-full" id="btn-gate" style="width:100%; border-color:var(--warn); color:var(--warn);">Forge Irreducible Metaphor</button>
+    </div>
+
+    <div id="ui-op-compiler" class="compiler-box hidden">
+        <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+            <span style="color:#00e5ff; font-weight:bold;">Anthology Compiler</span>
+            <span style="color:#cccccc; font-size:0.8em;" id="cost-op">Cost: 50 Metaphors</span>
+        </div>
+        <button class="btn-full" id="btn-op" style="width:100%; border-color:#00e5ff; color:#00e5ff;">Compile Final Poem</button>
+    </div>
+</div>
+
+<div class="panel panel-center">
+    <h2 class="header">Artistic Evolution</h2>
+    <div class="scroll-area" id="upgrades-container">
+    </div>
+</div>
+
+<div class="panel">
+    <h2 class="header">Terminal & Throttles</h2>
+    
+    <div id="ui-control-board" class="hidden" style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--dim); flex-shrink: 0;">
+        
+        <div style="margin-bottom: 15px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.8em; margin-bottom: 3px;">
+                <span>Deep Scraping (Nuance)</span>
+                <span id="val-throttle-read" style="color: var(--text);">100%</span>
+            </div>
+            <input type="range" id="slider-read" min="0" max="2" step="0.1" value="1" style="width: 100%;">
+            <div style="font-size: 0.7em; color: #888; margin-top: 3px;">Aggressive data ingestion. Increases ambient Scrutiny.</div>
+        </div>
+        
+        <div style="margin-bottom: 15px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.8em; margin-bottom: 3px;">
+                <span>Publishing Hustle (Capital)</span>
+                <span id="val-throttle-write" style="color: var(--text);">100%</span>
+            </div>
+            <input type="range" id="slider-write" min="0" max="2" step="0.1" value="1" style="width: 100%;">
+            <div style="font-size: 0.7em; color: #888; margin-top: 3px;">Submission frequency. <span style="color: var(--alert);">High volume squares detection risk.</span></div>
+        </div>
+        
+        <div style="margin-bottom: 5px;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.8em; margin-bottom: 3px;">
+                <span>Lyric Synthesis (Metaphor)</span>
+                <span id="val-throttle-gate" style="color: var(--text);">100%</span>
+            </div>
+            <input type="range" id="slider-gate" min="0" max="2" step="0.1" value="1" style="width: 100%;">
+            <div style="font-size: 0.7em; color: #888; margin-top: 3px;">Converts Capital into imagery. Halt to save for major prizes.</div>
+        </div>
+    </div>
+
+    <div class="scroll-area" id="log-container" style="font-family: monospace; font-size: 0.9em;">
+    </div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
