@@ -130,7 +130,7 @@ export function updateUI() {
     let btnMatch0 = el('btn-match-iamb');
     let btnMatch1 = el('btn-match-trochee');
 
-    if (state.flags.gatesUnlocked) {
+    if (state.flags.gatesUnlocked || state.auto.write > 0) {
         if(btnRead) btnRead.classList.add('hidden');
         if(btnWrite) btnWrite.classList.add('hidden');
         if(btnMatch0) btnMatch0.classList.add('hidden');

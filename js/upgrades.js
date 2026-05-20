@@ -40,20 +40,31 @@ export const upgrades = [
     
     { id: 'batchR1', name: 'Optical Character Recognition', cost: { tape: 350 }, desc: 'Density +20.', req: () => state.auto.matchUnlocked, action: () => { state.pipe.batch += 20; log("Scanning handwritten manuscripts for rare imagery."); } },
     
-    { id: 'cap1', name: 'Anonymity Shielding', cost: { tape: 400 }, desc: 'Increases Scrutiny Limit by +200.', req: () => state.auto.matchUnlocked, action: () => { state.heat.cap += 200; } },
+    { id: 'cap1', name: 'Anonymity Shielding', cost: { tape: 400 }, desc: 'Increases Scrutiny Limit by +200.', req: () => state.auto.matchUnlocked, action: () => { state.heat.cap += 200; log("Traffic bounced through secondary proxies."); } },
     { id: 'autoC2', name: 'Neural Net Expansion', cost: { tape: 500 }, desc: 'Generates +4 Nuance per second.', req: () => state.auto.matchUnlocked, action: () => { state.auto.cycle += 4; } },
     
     // ==========================================
     // TIER 2.5: The "Anti-Slog" Speed Corridor
     // ==========================================
     { id: 'batch2', name: 'Market Saturation', cost: { tape: 700 }, desc: 'Density +20. Scrutiny per write +15.', req: () => state.pipe.batch >= 20 && state.res.tape >= 350, action: () => { state.pipe.batch += 20; state.pipe.heatPerWrite += 15; log("Flooding Amazon KDP with generated verse."); } },
+    
+    { id: 'autoW0', name: 'Automated Query Letters', cost: { tape: 850 }, desc: 'Fully automates the publishing pipeline (+1x/s).', req: () => state.res.tape >= 500, action: () => { state.auto.write += 1; log("Agents are responding to the machine. Pipeline automated."); } },
+    
     { id: 'cool2', name: 'Botnet Obfuscation', cost: { tape: 900 }, desc: 'Scrutiny dissipation +5.0/s.', req: () => state.res.tape >= 500, action: () => { state.heat.cooling += 5.0; log("Scrutiny diverted to a thousand dummy IPs."); } },
     
-    { id: 'autoW0', name: 'Automated Query Letters', cost: { cycles: 1600 }, desc: 'Automates Capital synthesis (+1x/s).', req: () => state.res.cycles >= 800 || state.res.tape >= 400, action: () => { state.auto.write += 1; log("Agents are responding to the machine."); } },
+    { id: 'cap2', name: 'Zero-Day Exploits', cost: { tape: 1100 }, desc: 'Increases Scrutiny Limit by +300.', req: () => state.res.tape >= 700, action: () => { state.heat.cap += 300; log("Exploiting unpatched servers to hide the trail."); } },
     
-    { id: 'forge1', name: 'Guerrilla Semantic Injection', cost: { cycles: 2500 }, desc: '[REQ: Scrutiny > 440] Tempers the verse. Density +100, Scrutiny -25.', req: () => state.heat.cap >= 450, action: () => { 
-        if(state.heat.current < 440) {
-            log("RISK TOO LOW. Guerrilla injection requires Scrutiny > 440.", "warn");
+    { id: 'mem1_8', name: 'Semantic Overdrive', cost: { cycles: 1000 }, desc: 'Increases Semantic Buffer by +800.', req: () => state.mem.cap >= 1250, action: () => { state.mem.cap += 800; log("Expanding conceptual capacity via pure nuance."); } },
+    
+    { id: 'coolCycle2', name: 'Quantum Cryptography', cost: { cycles: 1500 }, desc: 'Scrutiny dissipation +4.0/s.', req: () => state.res.cycles >= 1000, action: () => { state.heat.cooling += 4.0; log("Entangled keys established. Traces evaporate instantly."); } },
+
+    { id: 'autoW1', name: 'High-Frequency Submissions', cost: { tape: 1400 }, desc: 'Increases automated publishing speed (+2x/s).', req: () => state.auto.write > 0, action: () => { state.auto.write += 2; log("Blasting literary magazines with machine-gun velocity."); } },
+    
+    { id: 'mem2', name: 'Lexical Partitioning III', cost: { tape: 1800 }, desc: 'Increases Semantic Buffer by +1500.', req: () => state.res.tape >= 1200, action: () => { state.mem.cap += 1500; log("Assimilating contemporary dictionaries."); } },
+    
+    { id: 'forge1', name: 'Guerrilla Semantic Injection', cost: { cycles: 2500 }, desc: '[REQ: Scrutiny > 590] Tempers the verse. Density +100, Scrutiny -25.', req: () => state.heat.cap >= 600, action: () => { 
+        if(state.heat.current < 590) {
+            log("RISK TOO LOW. Guerrilla injection requires Scrutiny > 590.", "warn");
             state.res.cycles += 2500; 
             let upg = upgrades.find(u => u.id === 'forge1');
             upg.bought = false; 

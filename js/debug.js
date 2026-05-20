@@ -12,6 +12,7 @@ export const debug = {
             background: #220000; border: 1px solid #ff0000; 
             padding: 10px; display: flex; gap: 5px; z-index: 9999; 
             color: #ffffff;
+            display: none; /* Hidden by default for regular players */
         `;
 
         // Helper to create buttons
@@ -48,7 +49,7 @@ export const debug = {
                 
                 if (!upg.bought) {
                     // Bypass the "Guerrilla Semantic Injection" scrutiny requirement
-                    if (upg.id === 'forge1') state.heat.current = 450;
+                    if (upg.id === 'forge1') state.heat.current = 600;
                     
                     upg.bought = true;
                     if (upg.element) upg.element.classList.add('hidden');
@@ -70,6 +71,13 @@ export const debug = {
         });
 
         document.body.appendChild(debugDiv);
-        log("DEBUG: Authorial overrides active.", "alert");
+        
+        // Secret developer toggle: Press the backtick (`) key to show/hide the menu
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '`') {
+                debugDiv.style.display = debugDiv.style.display === 'none' ? 'flex' : 'none';
+                if (debugDiv.style.display === 'flex') log("DEBUG: Authorial overrides active.", "alert");
+            }
+        });
     }
 };
