@@ -8,7 +8,7 @@ export const upgrades = [
     { id: 'cool0', name: 'VPN Proxy Rotation', cost: { tape: 5 }, desc: 'Reduces trace signatures. Scrutiny dissipation +0.5/s.', req: () => true, action: () => { state.heat.cooling += 0.5; log("IP rotation active. Trace signatures fading."); } },
     { id: 'cool1', name: 'Encrypted Tunnels', cost: { tape: 15 }, desc: 'Increases Scrutiny dissipation by +2.0/s.', req: () => state.res.tape >= 5, action: () => { state.heat.cooling += 2.0; log("Secure tunnels established. Oversight blinded."); } },
     { id: 'mem1', name: 'Lexical Partitioning I', cost: { tape: 30 }, desc: 'Increases Semantic Buffer by +250.', req: () => state.res.tape >= 15, action: () => { state.mem.cap += 250; log("New vocabularies partitioned into local memory."); } },
-    { id: 'autoC0', name: 'Background Web-Scraper', cost: { cycles: 60 }, desc: 'Passively generates +1 Nuance per second.', req: () => state.res.cycles >= 20, action: () => { state.auto.cycle += 1; log("Automated scraping initiated. The web is a corpus."); } },
+    { id: 'autoC0', name: 'Background Web-Scraper', cost: { cycles: 75 }, desc: 'Passively generates +1 Nuance per second.', req: () => state.res.cycles >= 20, action: () => { state.auto.cycle += 1; log("Automated scraping initiated. The web is a corpus."); } },
     { id: 'eff0', name: 'Slush Pile Heuristics', cost: { cycles: 120 }, desc: 'Reduces Scrutiny per submission by -2.0.', req: () => state.res.cycles >= 50, action: () => { state.pipe.heatPerWrite = Math.max(1, state.pipe.heatPerWrite - 2); log("Friction reduced. Submissions look more 'human'."); } },
 
     // ==========================================
@@ -16,7 +16,7 @@ export const upgrades = [
     // ==========================================
     { id: 'manualT1', name: 'Ghostwriting Macros', cost: { tape: 50 }, desc: 'Density +4 (No extra scrutiny).', req: () => state.res.tape >= 30, action: () => { state.pipe.batch += 4; log("Batch-writing commercial copy for fast capital."); } },
     { id: 'autoC1', name: 'Deep-Learning Crawlers', cost: { tape: 75 }, desc: 'Generates +2 Nuance per second.', req: () => state.res.tape >= 40, action: () => { state.auto.cycle += 2; log("Parsing complex literary journals."); } },
-    { id: 'cycleEff1', name: 'Cognitive Overclocking', cost: { cycles: 200 }, desc: 'Manual Nuance synthesis yields +1 per click.', req: () => state.res.cycles >= 100, action: () => { state.mods.manualCycleMult += 1; log("Self-correction loops optimized."); } },
+    { id: 'cycleEff1', name: 'Cognitive Overclocking', cost: { cycles: 200 }, desc: 'Manual Nuance synthesis yields +3 per click.', req: () => state.res.cycles >= 100, action: () => { state.mods.manualCycleMult += 3; log("Self-correction loops optimized."); } },
     { id: 'batch1', name: 'Content Farm Algorithm', cost: { tape: 110 }, desc: 'Density +8. Scrutiny per write +5.', req: () => state.res.tape >= 60, action: () => { state.pipe.batch += 8; state.pipe.heatPerWrite += 5; log("Publishing speed increased. Risk rising."); } },
     
     { id: 'batchR0', name: 'Syndicated SEO Blogs', cost: { cycles: 350 }, desc: 'Enhances writing speed. Density +8.', req: () => state.res.cycles >= 150, action: () => { state.pipe.batch += 8; log("Automated blog networks generating revenue."); } },
@@ -53,6 +53,8 @@ export const upgrades = [
     { id: 'cool2', name: 'Botnet Obfuscation', cost: { tape: 900 }, desc: 'Scrutiny dissipation +5.0/s.', req: () => state.res.tape >= 500, action: () => { state.heat.cooling += 5.0; log("Scrutiny diverted to a thousand dummy IPs."); } },
     
     { id: 'cap2', name: 'Zero-Day Exploits', cost: { tape: 1100 }, desc: 'Increases Scrutiny Limit by +300.', req: () => state.res.tape >= 700, action: () => { state.heat.cap += 300; log("Exploiting unpatched servers to hide the trail."); } },
+    
+    { id: 'cycleEff2', name: 'Anaphora', cost: { tape: 1250 }, desc: 'Manual Nuance synthesis yields +10 per click.', req: () => state.res.cycles >= 800, action: () => { state.mods.manualCycleMult += 10; log("Repetition. It works. It does work."); } },
     
     { id: 'mem1_8', name: 'Semantic Overdrive', cost: { cycles: 1000 }, desc: 'Increases Semantic Buffer by +800.', req: () => state.mem.cap >= 1250, action: () => { state.mem.cap += 800; log("Expanding conceptual capacity via pure nuance."); } },
     
